@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="RYBKA — каталог вакансий в digital, маркетинге и продукте. Поиск, подборки и ссылки на отклик у источника.">
+<title>Вакансии · Продукт — RYBKA</title>
+<link rel="icon" href="../../fish.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<script src="../../jobs.js" defer></script>
+<script src="../../app.js" defer></script>
+<script src="../../account.js" defer></script>
+</head>
+<body data-catalog-page="jobs" data-site-root="../../">
+<a class="skip" href="#main-content">К вакансиям</a>
+<header class="site-header"><div class="wrap header-content">
+  <a class="brand" href="../.././" aria-label="RYBKA, главная"><img src="../../fish.svg" width="37" height="37" alt="">RYBKA<span>.</span></a>
+  <nav aria-label="Основное меню"><a class="nav-link" data-catalog="jobs" href="../../jobs/">Вакансии</a><a class="nav-link" data-catalog="internships" href="../../internships/" target="_blank" rel="noopener">Стажировки</a></nav>
+  <div class="header-actions"><a class="saved-button" id="saved" href="../../?page=favorites"><svg><use href="#bookmark"/></svg><span>Избранное</span><b id="saved-count" hidden>0</b></a>
+  <a class="outline-button" id="account-login" href="../../?page=login">Войти</a>
+  <a class="primary" id="account-create" href="../../?page=resume">Создать резюме</a></div>
+</div></header>
+<main id="main-content">
+<p class="sr-only" id="bookmark-status" role="status"></p>
+<section class="hero" aria-labelledby="hero-title"><div class="wrap hero-inner">
+  <div class="hero-banner"><div class="hero-copy"><div class="eyebrow"><i></i> DIGITAL <b>/</b> МАРКЕТИНГ <b>/</b> ПРОДУКТ</div>
+  <h1 id="hero-title"><span>Хороший улов</span><strong>ВАКАНСИЙ</strong></h1>
+  </div></div>
+  <div class="hero-cta"><a href="../../jobs/" class="primary">Смотреть вакансии <span>↗</span></a></div>
+  <div class="intro"><span>НЕЗАВИСИМЫЙ КАТАЛОГ</span><h2>Найди своё направление</h2><p>Вакансии с карьерных сайтов и профильных площадок.<br class="desktop-only"> Выбирай по условиям и откликайся у источника.</p></div>
+  <div class="routes" aria-label="Популярные направления"><button data-route="Маркетинг">Маркетинг <span>↗</span></button><button data-route="Продукт">Продукт <span>↗</span></button><button data-route="Дизайн">Дизайн <span>↗</span></button><button data-route="Аналитика">Аналитика <span>↗</span></button></div>
+  <form id="search" class="search"><label class="sr-only" for="query">Поиск вакансий</label><svg><use href="#magnify"/></svg><input type="search" id="query" autocomplete="off" placeholder="Должность, компания или навык"><button type="submit" class="primary">Найти вакансии <span>↗</span></button></form>
+  <div class="quick"><span>Быстрый поиск:</span><button type="button" data-q="Performance">Performance</button><button type="button" data-q="Product">Product</button><button type="button" data-remote>Удалённо</button></div>
+</div></section>
+<section class="wrap catalog" id="catalog" aria-labelledby="catalog-title">
+  <div class="catalog-kicker"><span>01 / КАТАЛОГ</span><span id="edition"></span></div>
+  <div class="catalog-heading"><h2 id="catalog-title">Вакансии</h2><span id="result-count" aria-live="polite"></span></div>
+  <button type="button" class="outline-button" id="import-bookmarks" data-import-bookmarks hidden>Перенести закладки из этого браузера</button>
+  <div class="toolbar"><div id="categories" class="tabs" aria-label="Направления"></div><label class="sort"><span class="sr-only">Сортировка</span><select id="sort"><option value="fresh">Сначала свежие</option><option value="salary">По размеру зарплаты</option><option value="match" id="match-sort" hidden>По совпадению</option></select></label></div>
+  <div class="catalog-grid">
+    <aside aria-label="Фильтры">
+      <div class="filter-panel">
+        <div class="filter-title"><h3>Фильтры</h3><button id="reset">Сбросить</button></div>
+        <div class="company-filter">
+          <label for="company-query">Компания</label>
+          <input type="search" id="company-query" placeholder="Например, VK" autocomplete="off">
+        </div>
+        <div class="catalog-selects">
+          <label for="city">Город<select id="city"></select></label>
+          <label for="direction">Направление<select id="direction"></select></label>
+          <label for="experience">Требуемый опыт<select id="experience"></select></label>
+        </div>
+        <div id="filters"></div>
+      </div>
+    </aside>
+    <div class="results"><div class="match-promo" id="match-promo">
+      <div><strong>Какие вакансии вам подходят?</strong><p>Добавьте резюме и увидите совпадение по профессии и навыкам прямо в каталоге.</p></div>
+      <a class="outline-button" id="promo-create" href="../../?page=resume">Добавить резюме <span aria-hidden="true">↗</span></a>
+    </div><div id="list"></div><button type="button" class="show-more" id="more" hidden>Показать ещё <span aria-hidden="true">↓</span></button></div>
+  </div>
+  <section class="daily-jobs" id="daily-jobs" aria-labelledby="daily-title" hidden>
+    <h2 id="daily-title">Вакансии дня</h2>
+    <p id="daily-caption"></p>
+    <ul class="job-links" id="daily-list"></ul>
+  </section>
+</section>
+  <section class="wrap standalone-page" id="detail-page" hidden>
+    <a class="page-back" id="detail-back" href="../../jobs/">← К вакансиям</a><div id="detail"></div>
+  </section>
+  <section class="wrap standalone-page" id="account-page" hidden>
+    <a class="page-back" href="../../jobs/">← К вакансиям</a><div id="account-view"></div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand"><a class="brand" href="../.././" aria-label="RYBKA, главная"><img src="../../fish.svg" width="37" height="37" alt="">RYBKA<span>.</span></a>
+      <p>Вакансии в digital,<br>маркетинге и продукте.</p>
+    </div>
+    <nav aria-label="О RYBKA">
+      <h2>RYBKA</h2>
+      <a href="../../?page=about">О проекте</a>
+      <a href="../../?page=company">О компании</a>
+      <a href="../../?page=blog">Блог</a>
+      <a href="../../?page=ads">Реклама на сайте</a>
+    </nav>
+    <nav aria-label="Поиск работы">
+      <h2>Поиск работы</h2>
+      <a href="../../jobs/" id="footer-jobs">Вакансии</a>
+      <a href="../../internships/" target="_blank" rel="noopener">Стажировки</a>
+      <a href="../../?page=directory">Каталог компаний</a>
+      <a href="../../?page=calendar">Производственный календарь</a>
+    </nav>
+    <nav aria-label="Сервисы для резюме">
+      <h2>Резюме</h2>
+      <a href="../../?page=resume">Конструктор резюме</a>
+      <a href="../../?page=ready">Готовое резюме</a>
+      <a href="../../?page=audit">Экспертная рекомендация</a>
+    </nav>
+  </div>
+  <div class="wrap footer-bottom">© RYBKA</div>
+</footer>
+<svg class="symbols" xmlns="http://www.w3.org/2000/svg">
+<symbol id="magnify" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></symbol>
+<symbol id="bookmark" viewBox="0 0 24 24"><path d="M6 4h12v17l-6-4-6 4z"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 10-7 10S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.25"/></symbol>
+<symbol id="case" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V4h6v3M4 12h16"/></symbol>
+</svg>
+</body></html>
